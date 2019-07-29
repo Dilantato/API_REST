@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Masivian TEST</title>
+</head>
+
+<style>
+    body {
+        background: rgb(0, 98, 129);
+        background: linear-gradient(90deg, rgba(0, 98, 129, 1) 9%, rgba(32, 32, 32, 0.9247898988697041) 40%, rgba(179, 205, 220, 1) 78%);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 400;
+        font-size: 30pt;
+        flex-direction: row;
+        text-align: center;
+        margin: 2% 20% 0 20%;
+        color: white;
+       
+
+    }
+
+    h1 {
+        margin-bottom: 5%;
+        background: #bcbcbc8a;
+        border-radius: 10px; 
+    }
+
+    img {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        border-radius: 10px; 
+    }
+</style>
+
+<body>
+
+    <h1>Arbol Binario</h1>
+    <script>
+        function Nodo(valor, izquierdo, derecho) {
+            this.valor = valor;
+            this.izquierdo = izquierdo;
+            this.derecho = derecho;
+        }
+
+        var Nodo1 = new Nodo(1);
+        var Nodo2 = new Nodo(2);
+        var Nodo3 = new Nodo(3);
+        var Nodo4 = new Nodo(4);
+        var Nodo5 = new Nodo(5, Nodo1, Nodo2);
+        var Nodo6 = new Nodo(6, Nodo3, Nodo4);
+        var Nodo7 = new Nodo(7, Nodo5, Nodo6);
+
+        preorden(Nodo7); // 7, 5, 1, 2, 6, 3, 4
+
+
+
+        function preorden(nodo) {
+            if (nodo == undefined) return;
+
+            document.write("__" + nodo.valor + "__");
+
+            preorden(nodo.izquierdo);
+            preorden(nodo.derecho);
+
+        }
+
+
+
+
+
+
+    </script>
+
+    <img src="/binarytree.png" alt="">
+
+    <div id="LCA" class="input-group">
+
+        <input type="text" class="form-control" placeholder="raiz" id="root">
+        <input type="text" class="form-control" placeholder="nodo uno" id="nodo1">
+        <input type="text" class="form-control" placeholder="nodo dos" id="nodo2">
+        <button onclick="validar()" type="button" class="btn btn-primary btn-lg">Ancestro común más
+            cercano</button>
+
+
+    </div>
+
+    <label for="LCA" id="label"></label>
+    <script>
+
+
+        var lowestCommonAncestor = function (root, p, q) {
+            if (root.val > p.val && root.val > q.val) {
+                return lowestCommonAncestor(root.left, p, q);
+            }
+            else if (root.val < p.val && root.val < q.val) {
+                return lowestCommonAncestor(root.right, p, q);
+            }
+            else {
+                return root;
+            }
+        }
+
+        function validar() {
+            var raiz = document.getElementById("root").value;
+            var node1 = document.getElementById("nodo1").value;
+            var node2 = document.getElementById("nodo2").value;
+
+            var check = lowestCommonAncestor(raiz, node1, node2);
+
+            document.getElementById("label").innerHTML = check;
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
