@@ -15,3 +15,7 @@ npm i nodemon -D
 --> El programa se ejecuta en consola con:
 
 npm run dev
+
+--> Ingresar al navegador y buscar:
+
+http://localhost:4000/api/index 
