@@ -1,5 +1,5 @@
 # API_REST
-Using Node Js and express
+
 Como ejecutar el proyecto :
 
 Se debe tener instalado NodeJS, 
